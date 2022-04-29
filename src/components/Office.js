@@ -6,7 +6,7 @@ function Office() {
 	const [office, setoffice] = useState([]);
 	const officeData = async () => {
 		await axios
-			.get("https://d6b2-115-242-147-90.in.ngrok.io/appointments	")
+			.get("http://localhost:3001/appointments	")
 			.then((res) => setoffice(res.data));
 		console.log(office, "all the office in home page");
 	};

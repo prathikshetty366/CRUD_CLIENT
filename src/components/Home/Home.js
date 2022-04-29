@@ -17,15 +17,15 @@ const Home = () => {
 	const [contact, setContact] = useState();
 	const handleSubmit = () => {
 		axios
-			.post("https://d6b2-115-242-147-90.in.ngrok.io/create", {
-				Lastname: lastname,
+			.post("http://localhost:3001/create", {
+				LastName: lastname,
 				FirstName: firstname,
 				Age: age,
 				whenToVisit: date,
 				whomToVisit: Whom_to_visit,
 				Purpose: purpose,
 				Department: Department,
-				WhoAreYou: userType,
+				whoAreYou: userType,
 				Contact: contact,
 				statusCode: 0,
 			})
@@ -113,6 +113,7 @@ const Home = () => {
 				<button className="submt-button" onClick={() => handleSubmit()}>
 					create appointment
 				</button>
+
 			</div>
 			<div
 				style={{
@@ -121,13 +122,13 @@ const Home = () => {
 					alignItems: "center",
 				}}
 			>
-				<Link to="/employees">
-					<button className="submt-button">Viw all the appointments</button>
+					<Link to="/myappointments">
+					<button className="submt-button">View Your appointments</button>
 				</Link>
+				{/* <Link to="/employees">
+					<button className="submt-button">Viw all the appointments</button>
+				</Link> */}
 				<hr></hr>
-				{/* <button className="submt-button" onClick={() => deleteEmployees()}>
-					Delete Employees
-				</button> */}
 			</div>
 		</>
 	);

@@ -6,7 +6,7 @@ function Faculty() {
 	const [faculty, setfaculty] = useState([]);
 	const facultyData = async () => {
 		await axios
-			.get(`https://d6b2-115-242-147-90.in.ngrok.io/appointments	`)
+			.get(`http://localhost:3001/appointments	`)
 			.then((res) => setfaculty(res.data));
 		console.log(faculty, "all the faculty in home page");
 	};

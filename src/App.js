@@ -9,6 +9,8 @@ import Office from "./components/Office";
 import Hostel from "./components/Hostel";
 import Faculty from "./components/Faculty";
 import Appointments from "./components/Employees/Appointments";
+import Login from "./components/Login/Login";
+import Myappointments from "./components/myAppointments/Myappointments";
 function App() {
 	return (
 		<div>
@@ -16,11 +18,14 @@ function App() {
 
 			<BrowserRouter>
 				<Routes>
-					<Route path="/" element={<Home />} />
-					<Route path="/employees" element={<Appointments />} />
+					<Route path="/" element={<Login />} />
+					<Route path="/home" element={<Home />} />
+<Route path="/myappointments" element={<Myappointments/>}/>
+					<Route path="/Admin" element={<Appointments />} />
 					<Route path="/office" element={<Office />} />
 					<Route path="/hostel" element={<Hostel />} />
 					<Route path="/faculty" element={<Faculty />} />
+					<Route path="/login" element={<Login/>}/>
 				</Routes>
 			</BrowserRouter>
 		</div>
