@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { Link } from "react-router-dom";
+
 function Faculty() {
 	const [faculty, setfaculty] = useState([]);
 	const facultyData = async () => {
@@ -15,25 +15,45 @@ function Faculty() {
 	}, [faculty && faculty.length]);
 	const officeAppointment =
 		faculty && faculty.filter((emp) => emp.Department === "faculty");
+
+	const handleAccept = async (id, e) => {
+		await axios
+			.put(`http://localhost:3001/Accept`, {
+				id: id
+			})
+			.then((res) => toast.success(res.data));
+		facultyData()
+
+	}
+
+	const handleReject = async (id, e) => {
+		await axios
+			.put(`http://localhost:3001/Reject`, {
+				id: id
+			})
+			.then((res) => toast.success(res.data));
+		facultyData()
+	}
 	return (
 		<div>
-			{officeAppointment &&
-				officeAppointment.map((off) => {
+			{officeAppointment && officeAppointment.length !== 0 ?
+				officeAppointment.map((fac, index) => {
 					return (
 						<>
 							<div className="appointments">
-								<span>{off.User_Name}</span>
-								<span>{off.Date_of_visit}</span>
-								<span>{off.Department}</span>
-								<span>{off.Purpose}</span>
-								<span>{off.User_type}</span>
-								<span>{off.Whom_to_visit}</span>
+								<span>First Name:{fac.First_Name}</span>
+								<span>Last Name: {fac.Last_Name}</span>
+								<span>Purpose of visit: {fac.Purpose}</span>
+								<span>Date of appointment: {fac.WHEN_TO_VISIT}</span>
+								<span>Whom to Meet: {fac.WHOM_TO_VISIT}</span>
+								<span>Who is he: {fac.WHO_ARE_YOU}</span>
 							</div>
-							<button className="Accept">Accept</button>
-							<button className="Reject">Reject</button>
+							{fac.statusCode === 0 ? <button onClick={(e) => { handleAccept(fac.Personid, e) }} className="Accept">Accept</button> : fac.statusCode === 1 ? <span className="Accept">You Already Accepted this Request</span> : <span className="Reject">You Rejected this Request</span>}
+							{fac.statusCode === 0 ? <button onClick={(e) => { handleReject(fac.Personid, e) }} className="Reject">Reject</button> : <span></span>}
 						</>
 					);
-				})}
+				}) : <span>You dont have any appointments</span>
+			}
 		</div>
 	);
 }

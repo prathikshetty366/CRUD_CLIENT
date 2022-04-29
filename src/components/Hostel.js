@@ -15,25 +15,47 @@ function Hostel() {
 	}, [hostel && hostel.length]);
 	const HostelAppointment =
 		hostel && hostel.filter((hos) => hos.Department === "hostel");
+
+	const handleAccept = async (id, e) => {
+		await axios
+			.put(`http://localhost:3001/Accept`, {
+				id: id
+			})
+			.then((res) => toast.success(res.data));
+		hostelData()
+
+	}
+
+	const handleReject = async (id, e) => {
+		await axios
+			.put(`http://localhost:3001/Reject`, {
+				id: id
+			})
+			.then((res) => toast.success(res.data));
+		hostelData()
+	}
 	return (
 		<div>
-			{HostelAppointment &&
+			{HostelAppointment && HostelAppointment.length !== 0 ?
 				HostelAppointment.map((hos) => {
 					return (
 						<>
 							<div className="appointments">
-								<span>{hos.User_Name}</span>
-								<span>{hos.Date_of_visit}</span>
-								<span>{hos.Department}</span>
-								<span>{hos.Purpose}</span>
-								<span>{hos.User_type}</span>
-								<span>{hos.Whom_to_visit}</span>
+								<span>First Name:{hos.First_Name}</span>
+								<span>Last Name:{hos.Last_Name}</span>
+								<span>Purpose of visit:{hos.Purpose}</span>
+								<span>Date of appointment:{hos.WHEN_TO_VISIT}</span>
+								<span>Whom to Meet:{hos.WHOM_TO_VISIT}</span>
+								<span>Who is he:{hos.WHO_ARE_YOU}</span>
 							</div>
-							<button className="Accept">Accept</button>
-							<button className="Reject">Reject</button>
+							{hos.statusCode === 0 ? <button onClick={(e) => { handleAccept(hos.Personid, e) }} className="Accept">Accept</button> : hos.statusCode === 1 ? <span className="Accept">You  Accepted this Request</span> : <span>You Rejected this Request</span>}
+							{hos.statusCode === 0 ? <button onClick={(e) => { handleReject(hos.Personid, e) }} className="Reject">Reject</button> : <span></span>}
 						</>
 					);
-				})}
+				}
+				)
+				: <span>You dont have any appointments</span>
+			}
 		</div>
 	);
 }

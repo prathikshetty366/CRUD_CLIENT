@@ -122,7 +122,7 @@ const Home = () => {
 					alignItems: "center",
 				}}
 			>
-					<Link to="/myappointments">
+				<Link to="/myappointments">
 					<button className="submt-button">View Your appointments</button>
 				</Link>
 				{/* <Link to="/employees">

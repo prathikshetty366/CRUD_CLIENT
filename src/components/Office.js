@@ -15,25 +15,47 @@ function Office() {
 	}, [office && office.length]);
 	const officeAppointment =
 		office && office.filter((off) => off.Department === "office");
+
+
+	const handleAccept = async (id, e) => {
+		await axios
+			.put(`http://localhost:3001/Accept`, {
+				id: id
+			})
+			.then((res) => toast.success(res.data));
+		officeData()
+
+	}
+
+	const handleReject = async (id, e) => {
+		await axios
+			.put(`http://localhost:3001/Reject`, {
+				id: id
+			})
+			.then((res) => toast.success(res.data));
+		officeData()
+	}
 	return (
 		<div>
-			{officeAppointment &&
+			{officeAppointment && officeAppointment.length !== 0 ?
 				officeAppointment.map((off) => {
 					return (
 						<>
 							<div className="appointments">
-								<span>{off.User_Name}</span>
-								<span>{off.Date_of_visit}</span>
-								<span>{off.Department}</span>
-								<span>{off.Purpose}</span>
-								<span>{off.User_type}</span>
-								<span>{off.Whom_to_visit}</span>
+								<span>First Name:{off.First_Name}</span>
+								<span>Last Name:{off.Last_Name}</span>
+								<span>Purpose of visit:{off.Purpose}</span>
+								<span>Date of appointment:{off.WHEN_TO_VISIT}</span>
+								<span>Whom to Meet:{off.WHOM_TO_VISIT}</span>
+								<span>Who is he:{off.WHO_ARE_YOU}</span>
 							</div>
-							<button className="Accept">Accept</button>
-							<button className="Reject">Reject</button>
+							{off.statusCode === 0 ? <button onClick={(e) => { handleAccept(off.Personid, e) }} className="Accept">Accept</button> : off.statusCode === 1 ? <span className="Accept">You  Accepted this Request</span> : <span>You Rejected this Request</span>}
+							{off.statusCode === 0 ? <button onClick={(e) => { handleReject(off.Personid, e) }} className="Reject">Reject</button> : <span></span>}
 						</>
 					);
-				})}
+				})
+				: <span>You dont have any appointments</span>
+			}
 		</div>
 	);
 }
