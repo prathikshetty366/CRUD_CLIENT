@@ -6,26 +6,43 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 const Home = () => {
-	const [name, setName] = useState();
-	const [age, setAge] = useState();
-	const [position, setPosition] = useState();
+	const [lastname, setLastName] = useState("");
+	const [firstname, setFirstName] = useState("");
+	const [age, setAge] = useState(0);
+	const [date, setDate] = useState();
+	const [Whom_to_visit, setWhomToVisit] = useState("");
+	const [purpose, setPurpose] = useState("");
+	const [Department, setDeparment] = useState("");
+	const [userType, setUserType] = useState("");
+	const [contact, setContact] = useState();
 	const handleSubmit = () => {
 		axios
-			.post("http://localhost:3001/create", {
-				age: age,
-				name: name,
-				position: position,
+			.post("https://d6b2-115-242-147-90.in.ngrok.io/create", {
+				Lastname: lastname,
+				FirstName: firstname,
+				Age: age,
+				whenToVisit: date,
+				whomToVisit: Whom_to_visit,
+				Purpose: purpose,
+				Department: Department,
+				WhoAreYou: userType,
+				Contact: contact,
+				statusCode: 0,
 			})
 			.then((res) => toast.success(res.data));
 
 		// window.location.reload();
 	};
-	// const Employees = async () => {
-	// 	await axios
-	// 		.get("http://localhost:3001/employees")
-	// 		.then((res) => setEmployees(res.data));
-	// 	console.log(employees, "all the employees in home page");
-	// };
+
+	const handleAppointment = () => {
+		axios
+			.put("https://d6b2-115-242-147-90.in.ngrok.io/updateStatus", {
+				id: 1,
+			})
+			.then((res) => toast.success(res.data));
+
+		// window.location.reload();
+	};
 
 	return (
 		<>
@@ -38,26 +55,63 @@ const Home = () => {
 				}}
 			>
 				<h2>Fill the form</h2>
-				<label>Name</label>
+				<label>First Name</label>
 				<input
 					className="input-form"
 					type="text"
-					onChange={(e) => setName(e.target.value)}
+					onChange={(e) => setFirstName(e.target.value)}
 				/>
-				<label>age</label>
+				<label>Last Name</label>
+				<input
+					className="input-form"
+					type="text"
+					onChange={(e) => setLastName(e.target.value)}
+				/>
+				<label>Age</label>
 				<input
 					className="input-form"
 					type="text"
 					onChange={(e) => setAge(e.target.value)}
 				/>
-				<label>position</label>
+				<label>Date ofvisit</label>
 				<input
 					className="input-form"
 					type="text"
-					onChange={(e) => setPosition(e.target.value)}
+					onChange={(e) => setDate(e.target.value)}
+				/>
+				<label>Whom To Meet</label>
+				<input
+					className="input-form"
+					type="text"
+					onChange={(e) => setWhomToVisit(e.target.value)}
+				/>
+				<label>purpose</label>
+				<input
+					className="input-form"
+					type="text"
+					onChange={(e) => setPurpose(e.target.value)}
+				/>
+				<label>Department</label>
+				<input
+					className="input-form"
+					type="text"
+					onChange={(e) => setDeparment(e.target.value)}
+				/>
+				<label>User Type</label>
+				<input
+					className="input-form"
+					type="text"
+					onChange={(e) => setUserType(e.target.value)}
+				/>
+				<label>contact</label>
+
+				<input
+					className="input-form"
+					type="Number"
+					onChange={(e) => setContact(e.target.value)}
 				/>
 				<button className="submt-button" onClick={() => handleSubmit()}>
-					submit
+					create appointment
 				</button>
 			</div>
 			<div
@@ -68,7 +122,7 @@ const Home = () => {
 				}}
 			>
 				<Link to="/employees">
-					<button className="submt-button">Show Employees</button>
+					<button className="submt-button">Viw all the appointments</button>
 				</Link>
 				<hr></hr>
 				{/* <button className="submt-button" onClick={() => deleteEmployees()}>

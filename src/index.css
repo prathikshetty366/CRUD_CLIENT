@@ -11,3 +11,35 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+.Department{
+  margin: 10px;
+  padding:5px;
+  margin-bottom: 10px;
+}
+
+.appointments{
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+  background-color: burlywood;
+  margin :10px
+}
+
+.Accept{
+  width: auto;
+  background-color: green;
+  color: white;
+  margin: 5px;
+}
+.Reject{
+  width: auto;
+  background-color: red;
+  color: white;
+    margin: 5px;
+
+
+}

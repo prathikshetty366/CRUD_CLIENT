@@ -3,9 +3,12 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Employees from "./components/Employees/Employees";
 
 import React from "react";
+import Office from "./components/Office";
+import Hostel from "./components/Hostel";
+import Faculty from "./components/Faculty";
+import Appointments from "./components/Employees/Appointments";
 function App() {
 	return (
 		<div>
@@ -14,7 +17,10 @@ function App() {
 			<BrowserRouter>
 				<Routes>
 					<Route path="/" element={<Home />} />
-					<Route path="/employees" element={<Employees />} />
+					<Route path="/employees" element={<Appointments />} />
+					<Route path="/office" element={<Office />} />
+					<Route path="/hostel" element={<Hostel />} />
+					<Route path="/faculty" element={<Faculty />} />
 				</Routes>
 			</BrowserRouter>
 		</div>
