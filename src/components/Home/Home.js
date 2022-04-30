@@ -1,10 +1,26 @@
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./Home.css";
+import Modal from 'react-modal';
+
 
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+
+const customStyles = {
+	content: {
+	  top: '50%',
+	  left: '50%',
+	  right: 'auto',
+	  bottom: 'auto',
+	  marginRight: '-50%',
+	  transform: 'translate(-50%, -50%)',
+	},
+  };
+  
+  // Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
+  Modal.setAppElement('#root');
 const Home = () => {
 	const [lastname, setLastName] = useState("");
 	const [firstname, setFirstName] = useState("");
@@ -15,8 +31,24 @@ const Home = () => {
 	const [Department, setDeparment] = useState("");
 	const [userType, setUserType] = useState("");
 	const [contact, setContact] = useState();
-	const handleSubmit = () => {
-		axios
+	const [modalIsOpen, setIsOpen] = React.useState(false);
+	let subtitle;
+
+//   function openModal() {
+//     setIsOpen(true);
+//   }
+
+  function afterOpenModal() {
+    // references are now sync'd and can be accessed.
+    subtitle.style.color = '#f00';
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+			window.location.reload();
+  }
+	const handleSubmit = async() => {
+	await	axios
 			.post("http://localhost:3001/create", {
 				LastName: lastname,
 				FirstName: firstname,
@@ -29,20 +61,11 @@ const Home = () => {
 				Contact: contact,
 				statusCode: 0,
 			})
-			.then((res) => toast.success(res.data.message));
-
-		// window.location.reload();
+			.then((res) => {
+				setIsOpen(true)
+			});
 	};
-
-	const handleAppointment = () => {
-		axios
-			.put("https://d6b2-115-242-147-90.in.ngrok.io/updateStatus", {
-				id: 1,
-			})
-			.then((res) => toast.success(res.data));
-
-		// window.location.reload();
-	};
+	
 
 	return (
 		<>
@@ -54,7 +77,7 @@ const Home = () => {
 					alignItems: "center",
 				}}
 			>
-				<h2>Fill the form</h2>
+				<h2>Book your appointment</h2>
 				<label>First Name</label>
 				<input
 					className="input-form"
@@ -130,6 +153,19 @@ const Home = () => {
 				</Link> */}
 				<hr></hr>
 			</div>
+			<Modal
+        isOpen={modalIsOpen}
+        onAfterOpen={afterOpenModal}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Example Modal"
+      >
+        <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Congrats</h2>
+        <h2>Your Appointment Booked Successfully</h2>
+		<button className="Accept" onClick={closeModal}>close</button>
+
+        
+      </Modal>
 		</>
 	);
 };
