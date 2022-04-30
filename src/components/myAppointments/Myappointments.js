@@ -21,7 +21,7 @@ function Myappointments() {
     }, [])
     return (
         <div>
-            {mySlots && mySlots.map((slot) => {
+            {mySlots && mySlots.length !== 0 ? mySlots.map((slot) => {
                 return (
                     <div className="appointments">
                         <span>First Name : {slot.First_Name}</span>
@@ -36,7 +36,9 @@ function Myappointments() {
                         </div>
                     </div>
                 )
-            })
+            }) :
+                <h2>You Dont Have any Active Appointmenrs
+                </h2>
             }
         </div>
     )

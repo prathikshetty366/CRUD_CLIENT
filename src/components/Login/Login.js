@@ -20,7 +20,6 @@ function Login() {
     } else {
       console.log("invalid Credentials")
     }
-
   }
   return (
     <div className='login'>
@@ -37,8 +36,8 @@ function Login() {
         onChange={(e) => setPassword(e.target.value)}
       />
       <button onClick={handleLogin}>Login</button>
-
-      <h6 style={{ backgroundColor: "orange", padding: "5px", borderRadius: "7px" }}>If you're a new user please signup</h6>
+<Link to="/signup">
+      <h6 style={{ backgroundColor: "orange", padding: "5px", borderRadius: "7px",textDecorationLine:"none" }}>If you're a new user please signup</h6> </Link>
       <Link to="/Admin">   <h6 style={{ backgroundColor: "orange", padding: "5px", borderRadius: "7px", textDecoration: "none" }}>Login As Admin</h6></Link>
 
     </div>

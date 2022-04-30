@@ -21,7 +21,7 @@ function Faculty() {
 			.put(`http://localhost:3001/Accept`, {
 				id: id
 			})
-			.then((res) => toast.success(res.data));
+			.then((res) => toast.success(res.data.message));
 		facultyData()
 
 	}
@@ -31,7 +31,7 @@ function Faculty() {
 			.put(`http://localhost:3001/Reject`, {
 				id: id
 			})
-			.then((res) => toast.success(res.data));
+			.then((res) => toast.success(res.data.message));
 		facultyData()
 	}
 	return (

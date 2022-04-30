@@ -11,6 +11,7 @@ import Faculty from "./components/Faculty";
 import Login from "./components/Login/Login";
 import Myappointments from "./components/myAppointments/Myappointments";
 import ChooseDepartment from "./components/Department/ChooseDepartment";
+import Signup from "./components/signup/Signup";
 function App() {
 	return (
 		<div>
@@ -26,6 +27,7 @@ function App() {
 					<Route path="/hostel" element={<Hostel />} />
 					<Route path="/faculty" element={<Faculty />} />
 					<Route path="/login" element={<Login />} />
+					<Route path="/signup" element={<Signup/>}/>
 				</Routes>
 			</BrowserRouter>
 		</div>

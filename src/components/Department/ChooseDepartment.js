@@ -6,9 +6,7 @@ import './ChooseDepartment.css'
 function ChooseDepartment() {
 	return (
 		<>
-			<Link to="/">
-				<button>back</button>
-			</Link>
+			
 			<div
 				style={{
 					display: "flex",

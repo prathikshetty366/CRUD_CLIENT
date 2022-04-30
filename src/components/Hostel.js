@@ -6,7 +6,7 @@ function Hostel() {
 	const [hostel, sethostel] = useState([]);
 	const hostelData = async () => {
 		await axios
-			.get("https://d6b2-115-242-147-90.in.ngrok.io/appointments	")
+			.get("http://localhost:3001/appointments	")
 			.then((res) => sethostel(res.data));
 		console.log(hostel, "all the hostel in home page");
 	};
@@ -21,7 +21,7 @@ function Hostel() {
 			.put(`http://localhost:3001/Accept`, {
 				id: id
 			})
-			.then((res) => toast.success(res.data));
+			.then((res) => toast.success(res.data.message));
 		hostelData()
 
 	}
@@ -31,7 +31,7 @@ function Hostel() {
 			.put(`http://localhost:3001/Reject`, {
 				id: id
 			})
-			.then((res) => toast.success(res.data));
+			.then((res) => toast.success(res.data.message));
 		hostelData()
 	}
 	return (
@@ -48,7 +48,7 @@ function Hostel() {
 								<span>Whom to Meet:{hos.WHOM_TO_VISIT}</span>
 								<span>Who is he:{hos.WHO_ARE_YOU}</span>
 							</div>
-							{hos.statusCode === 0 ? <button onClick={(e) => { handleAccept(hos.Personid, e) }} className="Accept">Accept</button> : hos.statusCode === 1 ? <span className="Accept">You  Accepted this Request</span> : <span>You Rejected this Request</span>}
+							{hos.statusCode === 0 ? <button onClick={(e) => { handleAccept(hos.Personid, e) }} className="Accept">Accept</button> : hos.statusCode === 1 ? <span className="Accept">You  Accepted this Request</span> : <span className="Reject">You Rejected this Request</span>}
 							{hos.statusCode === 0 ? <button onClick={(e) => { handleReject(hos.Personid, e) }} className="Reject">Reject</button> : <span></span>}
 						</>
 					);

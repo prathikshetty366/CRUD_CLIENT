@@ -22,7 +22,7 @@ function Office() {
 			.put(`http://localhost:3001/Accept`, {
 				id: id
 			})
-			.then((res) => toast.success(res.data));
+			.then((res) => toast.success(res.data.message));
 		officeData()
 
 	}
@@ -32,7 +32,7 @@ function Office() {
 			.put(`http://localhost:3001/Reject`, {
 				id: id
 			})
-			.then((res) => toast.success(res.data));
+			.then((res) => toast.success(res.data.message));
 		officeData()
 	}
 	return (

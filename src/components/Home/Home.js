@@ -29,7 +29,7 @@ const Home = () => {
 				Contact: contact,
 				statusCode: 0,
 			})
-			.then((res) => toast.success(res.data));
+			.then((res) => toast.success(res.data.message));
 
 		// window.location.reload();
 	};
