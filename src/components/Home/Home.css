@@ -1,12 +1,14 @@
-.home{
-    background-color: #7EC3B0;
-    height: 100vh;
-    margin: 10px;
-    padding: 10px;
-    border-radius: 10px;
+.home {
+  background-color: #7EC3B0;
+  height: 100vh;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
 }
-.submt-button{
-   background-color: #0cf0be; /* Green */
+
+.submt-button {
+  background-color: #0cf0be;
+  /* Green */
   border: none;
   color: black;
   padding: 15px 32px;
@@ -17,16 +19,17 @@
   border-radius: 10px;
   margin: 10px;
 }
-.input-form{
-      margin: 10px;
-    /* padding: 10; */
-    background-color: bisque;
-    border-radius: 10px;
-    text-align: center;
-    margin-left: 10px;
-    overflow-wrap: break-word;
-    width: auto;
-    height: 20px;
+
+.input-form {
+  margin: 10px;
+  /* padding: 10; */
+  background-color: bisque;
+  border-radius: 10px;
+  text-align: center;
+  margin-left: 10px;
+  overflow-wrap: break-word;
+  width: auto;
+  height: 20px;
 
 
 }

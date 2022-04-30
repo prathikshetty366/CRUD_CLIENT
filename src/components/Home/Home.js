@@ -10,17 +10,17 @@ import { Link } from "react-router-dom";
 
 const customStyles = {
 	content: {
-	  top: '50%',
-	  left: '50%',
-	  right: 'auto',
-	  bottom: 'auto',
-	  marginRight: '-50%',
-	  transform: 'translate(-50%, -50%)',
+		top: '50%',
+		left: '50%',
+		right: 'auto',
+		bottom: 'auto',
+		marginRight: '-50%',
+		transform: 'translate(-50%, -50%)',
 	},
-  };
-  
-  // Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
-  Modal.setAppElement('#root');
+};
+
+// Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
+Modal.setAppElement('#root');
 const Home = () => {
 	const [lastname, setLastName] = useState("");
 	const [firstname, setFirstName] = useState("");
@@ -34,21 +34,21 @@ const Home = () => {
 	const [modalIsOpen, setIsOpen] = React.useState(false);
 	let subtitle;
 
-//   function openModal() {
-//     setIsOpen(true);
-//   }
+	//   function openModal() {
+	//     setIsOpen(true);
+	//   }
 
-  function afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    subtitle.style.color = '#f00';
-  }
+	function afterOpenModal() {
+		// references are now sync'd and can be accessed.
+		subtitle.style.color = '#f00';
+	}
 
-  function closeModal() {
-    setIsOpen(false);
-			window.location.reload();
-  }
-	const handleSubmit = async() => {
-	await	axios
+	function closeModal() {
+		setIsOpen(false);
+		window.location.reload();
+	}
+	const handleSubmit = async () => {
+		await axios
 			.post("http://localhost:3001/create", {
 				LastName: lastname,
 				FirstName: firstname,
@@ -65,7 +65,7 @@ const Home = () => {
 				setIsOpen(true)
 			});
 	};
-	
+
 
 	return (
 		<>
@@ -154,18 +154,18 @@ const Home = () => {
 				<hr></hr>
 			</div>
 			<Modal
-        isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
-        onRequestClose={closeModal}
-        style={customStyles}
-        contentLabel="Example Modal"
-      >
-        <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Congrats</h2>
-        <h2>Your Appointment Booked Successfully</h2>
-		<button className="Accept" onClick={closeModal}>close</button>
+				isOpen={modalIsOpen}
+				onAfterOpen={afterOpenModal}
+				onRequestClose={closeModal}
+				style={customStyles}
+				contentLabel="Example Modal"
+			>
+				<h2 ref={(_subtitle) => (subtitle = _subtitle)}>Congrats</h2>
+				<h2>Your Appointment Booked Successfully</h2>
+				<button className="Accept" onClick={closeModal}>close</button>
 
-        
-      </Modal>
+
+			</Modal>
 		</>
 	);
 };

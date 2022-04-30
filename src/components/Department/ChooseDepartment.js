@@ -6,7 +6,7 @@ import './ChooseDepartment.css'
 function ChooseDepartment() {
 	return (
 		<>
-			
+
 			<div
 				style={{
 					display: "flex",

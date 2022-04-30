@@ -13,24 +13,24 @@ code {
 }
 
 
-.Department{
+.Department {
   margin: 10px;
-  padding:5px;
+  padding: 5px;
   margin-bottom: 10px;
 }
 
-.appointments{
+.appointments {
   display: flex;
   flex-direction: column;
   padding: 20px;
   justify-content: center;
   align-items: center;
   background-color: burlywood;
-  margin :10px;
+  margin: 10px;
   border-radius: 10px;
 }
 
-.Accept{
+.Accept {
   width: auto;
   background-color: green;
   color: white;
@@ -38,7 +38,8 @@ code {
   padding: 5px;
   border-radius: 5px;
 }
-.Reject{
+
+.Reject {
   width: auto;
   background-color: red;
   color: white;
