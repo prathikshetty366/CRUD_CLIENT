@@ -26,7 +26,8 @@ code {
   justify-content: center;
   align-items: center;
   background-color: burlywood;
-  margin :10px
+  margin :10px;
+  border-radius: 10px;
 }
 
 .Accept{

@@ -13,7 +13,6 @@ function Myappointments() {
                 }
             })
             .then((res) => setMySlots(res.data.result));
-        console.log(mySlots, "my SLots")
     }
     useEffect(() => {
 
