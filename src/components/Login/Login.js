@@ -25,29 +25,32 @@ function Login() {
     if (userData && userData.result && userData.result[0].Contact === number && userData.result[0].password === password) {
       navigate(`/home`)
     } else {
-      toast.error("Invalid Credential")
+      console.log("Invalid Credential")
     }
   }
   return (
     <>
       <div className='login'>
-        <label>Enter Your Registered Number</label>
+        <label className='label'>Enter Your Registered Number</label>
         <input
           className="input-form"
           type="text"
           onChange={(e) => setNumber(e.target.value)}
+          placeholder="ex:Pratheek"
         />
-        <label>Enter Your  password</label>
+        <label className='label'>Enter Your  password</label>
         <input
           className="input-form"
           type="text"
           onChange={(e) => setPassword(e.target.value)}
+          placeholder="ex:****"
+
         />
-        <button onClick={handleLogin}>Login</button>
+        <button className='loginButton' onClick={handleLogin}>Login</button>
         <p style={{ fontSize: "10px" }}>**Double Click on the Login to verify</p>
         <Link to="/signup">
-          <h6 style={{ backgroundColor: "orange", padding: "5px", borderRadius: "7px", textDecorationLine: "none", margin: 0 }}>If you're a new user please signup</h6> </Link>
-        <Link to="/Admin">   <h6 style={{ backgroundColor: "orange", padding: "5px", borderRadius: "7px", textDecoration: "none" }}>Login As Admin</h6></Link>
+          <h6 className='newUserButton'>If You're a New User Please Signup</h6> </Link>
+        <Link to="/Admin">   <h6 className='newUserButton'>Login As Admin</h6></Link>
 
       </div>
 

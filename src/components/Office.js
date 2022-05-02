@@ -49,7 +49,7 @@ function Office() {
 								<span>Whom to Meet:{off.WHOM_TO_VISIT}</span>
 								<span>Who is he:{off.WHO_ARE_YOU}</span>
 							</div>
-							{off.statusCode === 0 ? <button onClick={(e) => { handleAccept(off.Personid, e) }} className="Accept">Accept</button> : off.statusCode === 1 ? <span className="Accept">You  Accepted this Request</span> : <span>You Rejected this Request</span>}
+							{off.statusCode === 0 ? <button onClick={(e) => { handleAccept(off.Personid, e) }} className="Accept">Accept</button> : off.statusCode === 1 ? <span className="Accept">You  Accepted this Request</span> : <span className="Reject">You Rejected this Request</span>}
 							{off.statusCode === 0 ? <button onClick={(e) => { handleReject(off.Personid, e) }} className="Reject">Reject</button> : <span></span>}
 						</>
 					);

@@ -30,7 +30,8 @@ const Home = () => {
 	const [purpose, setPurpose] = useState("");
 	const [Department, setDeparment] = useState("");
 	const [userType, setUserType] = useState("");
-	const [contact, setContact] = useState();
+	const [contact, setContact] = useState(localStorage.getItem("phonenumber")
+	);
 	const [modalIsOpen, setIsOpen] = React.useState(false);
 	let subtitle;
 
@@ -67,6 +68,7 @@ const Home = () => {
 	};
 
 
+
 	return (
 		<>
 			<div
@@ -83,58 +85,73 @@ const Home = () => {
 					className="input-form"
 					type="text"
 					onChange={(e) => setFirstName(e.target.value)}
+					placeholder="Ex : Anil"
+
 				/>
 				<label>Last Name</label>
 				<input
 					className="input-form"
 					type="text"
 					onChange={(e) => setLastName(e.target.value)}
+					placeholder="Ex : Shetty"
+
 				/>
 				<label>Age</label>
 				<input
 					className="input-form"
 					type="text"
 					onChange={(e) => setAge(e.target.value)}
+					placeholder="Ex : 21"
+
 				/>
 				<label>Date ofvisit</label>
 				<input
 					className="input-form"
 					type="text"
 					onChange={(e) => setDate(e.target.value)}
+					placeholder="Ex : 2022-05-21"
+
 				/>
 				<label>Whom To Meet</label>
 				<input
 					className="input-form"
 					type="text"
 					onChange={(e) => setWhomToVisit(e.target.value)}
+					placeholder="Ex : HOD"
+
 				/>
-				<label>purpose</label>
+				<label>Purpose</label>
 				<input
 					className="input-form"
 					type="text"
 					onChange={(e) => setPurpose(e.target.value)}
+					placeholder="Ex : Refund"
+
 				/>
 				<label>Department</label>
-				<input
-					className="input-form"
-					type="text"
-					onChange={(e) => setDeparment(e.target.value)}
-				/>
+				<select onChange={e => setDeparment(e.target.value)}>
+        <option value="office">office</option>
+        <option value="faculty">faculty</option>
+        <option value="hostel">hostel </option>
+      </select>
 				<label>User Type</label>
 				<input
 					className="input-form"
 					type="text"
 					onChange={(e) => setUserType(e.target.value)}
+					placeholder="Ex : Alumni"
 				/>
-				<label>contact</label>
+				  
+				<label>Contact</label>
 
 				<input
 					className="input-form"
 					type="Number"
-					onChange={(e) => setContact(e.target.value)}
+					value={contact}
+					// onChange={(e) => setContact(e.target.value)}
 				/>
 				<button className="submt-button" onClick={() => handleSubmit()}>
-					create appointment
+					Book Now
 				</button>
 
 			</div>
@@ -168,5 +185,6 @@ const Home = () => {
 			</Modal>
 		</>
 	);
+
 };
 export default Home;
