@@ -27,12 +27,11 @@ function Signup() {
             .then((res) => {
                 toast.success(res.data.message);
                 setSignUpResponse(res.data)
-
+                if (res && res.data.userCreated === true) {
+                    navigate(`/home`)
+                }
             });
-        if (signUpResponse && signUpResponse.success === true) {
-            navigate(`/home`)
-
-        }
+       
     }
     return (
         <div
@@ -41,40 +40,41 @@ function Signup() {
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
+                backgroundColor:"black"
             }}
         >
-            <h2>Fill the Details to create a Account</h2>
-            <label>First Name</label>
+            <h2 className='label'>Fill The Details to Create a Account</h2>
+            <label className='label'>First Name</label>
             <input
                 className="input-form"
                 type="text"
                 onChange={(e) => setFirstName(e.target.value)}
             />
-            <label>Last Name</label>
+            <label className='label' >Last Name</label>
             <input
                 className="input-form"
                 type="text"
                 onChange={(e) => setLastName(e.target.value)}
             />
-            <label>Age</label>
+            <label  className='label' >Age</label>
             <input
                 className="input-form"
                 type="text"
                 onChange={(e) => setAge(e.target.value)}
             />
-            <label>contact</label>
+            <label className='label' >Contact</label>
             <input
                 className="input-form"
                 type="Number"
                 onChange={(e) => setContact(e.target.value)}
             />
-            <label>password</label>
+            <label  className='label'>Password</label>
             <input
                 className="input-form"
                 type="Number"
                 onChange={(e) => setPassword(e.target.value)}
             />
-            <button className="submt-button" onClick={() => handleAccount()}>
+            <button style={{marginTop:"20px"}} className="loginButton" onClick={() => handleAccount()}>
                 Create Account
             </button>
 

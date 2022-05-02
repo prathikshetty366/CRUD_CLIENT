@@ -48,3 +48,9 @@ code {
   border-radius: 5px;
 
 }
+.label{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: medium;
+  color: white;
+  padding: 10px;
+}
