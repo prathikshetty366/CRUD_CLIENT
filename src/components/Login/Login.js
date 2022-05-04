@@ -21,12 +21,14 @@ function Login() {
       .post(`http://localhost:3001/Login`, {
         Contact: number
       })
-      .then((res) => setUserDara(res.data));
-    if (userData && userData.result && userData.result[0].Contact === number && userData.result[0].password === password) {
-      navigate(`/home`)
-    } else {
-      console.log("Invalid Credential")
-    }
+      .then((res) =>{ setUserDara(res.data)
+        if (res.data && res.data.result && res.data.result[0].Contact === number && res.data.result[0].password === password) {
+          navigate(`/home`)
+        } else {
+          console.log("Invalid Credential")
+        }
+      });
+   
   }
   return (
     <>
@@ -47,7 +49,6 @@ function Login() {
 
         />
         <button className='loginButton' onClick={handleLogin}>Login</button>
-        <p style={{ fontSize: "10px" }}>**Double Click on the Login to verify</p>
         <Link to="/signup">
           <h6 className='newUserButton'>If You're a New User Please Signup</h6> </Link>
         <Link to="/Admin">   <h6 className='newUserButton'>Login As Admin</h6></Link>
